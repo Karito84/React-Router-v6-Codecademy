@@ -26,7 +26,22 @@ This project was originally a Codecademy exercise to learn React Router v5. Sinc
       - the paths are relative,
       - the order of `<Route>`'s doesn't matter, 
       - `<Child Component>` in a `<Route>` in v5 app is moved to a named `element` prop.: `<Route element>` . 
-    - added an additional `<Route>` to render **Category** component `<Route path="categories/:name" element={<Category />}/>)` (and removed the commented out `<Route>` from **Categories** component). In v6 `<Route>`'s can be nested in one place instead of being spread out in different components. This makes it easier to see all routes at once.  
 
+### Linking to Routes
+- in **Articles** component imported `Link` 
+  - replaced `<a>` tag with `<Link>` ( paths in `<Link to>` are relative !)
+- in **Header** component imported `NavLink`
+  - replaced `<a>` tags with `<NavLink>`'s
+- in **Categories** the path: `<Link to={${url}/${category}}` needs to be changed to reative path: `<Link to={{category}}>{category}` for it to work with v6
 
+### Dynamic Routes 
+- in **App.js** added a dynamic routes to `<Article>` and `<Author>` components
+- added an additional dynamic `<Route>` to render **Category** component `<Route path="categories/:name" element={<Category />}/>)` (and removed the commented out `<Route>` from **Categories** component). In v6 `<Route>`'s can be nested in one place instead of being spread out in different components. This makes it easier to see all routes at once.  
+
+### URL parameters
+- in **Article** component imported `useParams()` hook
+- extracted the `name` URL parameter
+- updated `author` with the variable `name`to display the data correctly
+
+### 
 
