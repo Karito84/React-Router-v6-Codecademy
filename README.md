@@ -27,21 +27,44 @@ This project was originally a Codecademy exercise to learn React Router v5. Sinc
       - the order of `<Route>`'s doesn't matter, 
       - `<Child Component>` in a `<Route>` in v5 app is moved to a named `element` prop.: `<Route element>` . 
 
-### Linking to Routes
+#### Linking to Routes
 - in **Articles** component imported `Link` 
   - replaced `<a>` tag with `<Link>` ( paths in `<Link to>` are relative !)
 - in **Header** component imported `NavLink`
   - replaced `<a>` tags with `<NavLink>`'s
 - in **Categories** the path: `<Link to={${url}/${category}}` needs to be changed to reative path: `<Link to={{category}}>{category}` for it to work with v6
 
-### Dynamic Routes 
+#### Dynamic Routes 
 - in **App.js** added a dynamic routes to `<Article>` and `<Author>` components
 - added an additional dynamic `<Route>` to render **Category** component `<Route path="categories/:name" element={<Category />}/>)` (and removed the commented out `<Route>` from **Categories** component). In v6 `<Route>`'s can be nested in one place instead of being spread out in different components. This makes it easier to see all routes at once.  
 
-### URL parameters
+#### URL parameters (the same in v5 and v6)
 - in **Article** component imported `useParams()` hook
 - extracted the `name` URL parameter
 - updated `author` with the variable `name`to display the data correctly
 
-### 
+#### `<Switch>` and `exact`
+- there is no need for `<Switch>` in v6. The `<Routes>` component is used instead
+- `<Route exact>` is gone. Instead, routes with descendant routes (defined in other components) use a trailing * in their path to indicate they match deeply, more information: [React Router Upgrading from v5](https://reactrouter.com/en/v6.3.0/upgrading/v5)
+
+#### Nested Routes
+In v6 `<Route>`'s may be nested in one place instead of being spread out in different components. In small to medium-sized apps, this lets you easily see all your routes at once.
+The nested routes build their path by adding to the parent route's path. When using a nested config, routes with children should render an `<Outlet>` in order to render their child routes. This makes it easy to render layouts with nested UI.
+- for **Profile** component the lesson instructions needed to be adjusted to v6:
+  - the `<Route>` for `EditProfileForm` had to be rendered. Instead of rendering it in **Profile** component, in v6 I could do it in **App.js** to keep all the routes together. Since `EditProfileForm` component was supposed to render when the URL changed to `/profile/edit`, I created a nested route inside `<Route path="profile" element={ <Profile/>}>` with realtive path to `EditProfile` component,
+  - because in v6 `<Route path>` and `<Link to>` are relative, they automatically build on the parent route's path and URL. There was no need to manually interpolate match.url or match.path, the `useRouteMatch()` hook from v5 is not needed in v6
+  - in order to render the `EditProfileForm` (the child route) from `Profile` (parent route), **Profile** had to render an `<Outlet>`
+  
+###
+
+
+
+
+
+
+
+
+
+
+
 
