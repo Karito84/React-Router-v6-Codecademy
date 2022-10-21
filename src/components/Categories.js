@@ -18,7 +18,7 @@ export default function Categories () {
           Object.keys(categories).map(category => {
             return (
               <li key={category}>
-                <Link to={`${category}`}>{category}</Link>  {/* path in <Link/> in v6 is relative, previous path in v5 was <Link to={`${url}/${category}`   */}
+                <Link to={category}>{category}</Link>  {/* path in <Link/> in v6 is relative, previous path in v5 was <Link to={`${url}/${category}`   */}
               </li>
             )
           })
